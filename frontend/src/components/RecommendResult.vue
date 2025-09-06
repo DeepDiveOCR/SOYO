@@ -130,7 +130,14 @@
     <div v-if="selectedPlace" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
         <div class="modal-header">
-          <h2 class="modal-title">{{ selectedPlace.displayTitle || selectedPlace.title }}</h2>
+          <div class="modal-title-container">
+            <h2 class="modal-title">{{ translatedTitle || selectedPlace.displayTitle || selectedPlace.title }}</h2>
+            <div class="translate-buttons">
+              <button @click.stop="translatePlaceName('en')" :disabled="isTranslating" class="translate-btn">En</button>
+              <button @click.stop="translatePlaceName('jp')" :disabled="isTranslating" class="translate-btn">Jp</button>
+              <button @click.stop="translatePlaceName('zh')" :disabled="isTranslating" class="translate-btn">Zh</button>
+            </div>
+          </div>
           <button class="modal-close" @click="closeModal">&times;</button>
         </div>
         
@@ -315,6 +322,8 @@ export default {
       showModal: false,
       modalMessage: '',
       bookmarkDisabled: [],
+      translatedTitle: null, // 번역된 제목 저장
+      isTranslating: false, // 번역 로딩 상태
     };
   },
   computed: {
@@ -1685,5 +1694,38 @@ export default {
   .google-map-container {
     height: 200px;
   }
+}
+
+.modal-title-container {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* 제목과 버튼 그룹 사이의 간격 */
+  flex-grow: 1; /* 가능한 많은 공간 차지 */
+}
+
+.translate-buttons {
+  display: flex;
+  gap: 8px; /* 버튼 사이의 간격 */
+}
+
+.translate-btn {
+  background: #f1f3f5;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #495057;
+  cursor: pointer;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.translate-btn:hover {
+  background-color: #e9ecef;
+}
+
+.translate-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 </style>
