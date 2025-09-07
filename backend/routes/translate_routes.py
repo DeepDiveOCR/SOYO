@@ -35,7 +35,7 @@ async def translate_text(request: dict):
                 result = response.json()
                 return {
                     "success": True,
-                    "translated_text": result.get("translated_text", text)
+                    "translated_text": result.get("translate", text)
                 }
             else:
                 raise HTTPException(
