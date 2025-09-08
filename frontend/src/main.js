@@ -14,11 +14,12 @@ import GuidedSearch from './components/GuidedSearch.vue'
 
 const routes = [
   { path: '/auth', component: AuthPage },
-  { path: '/', component: Home },
-  { path: '/destination', redirect: '/search' }, // Redirect to the new chooser page
-  { path: '/search', component: SearchChooser }, // New search chooser page
-  { path: '/preference', component: PreferenceInput }, // Existing free search
-  { path: '/search/guided', component: GuidedSearch }, // New guided search
+  { path: '/', redirect: '/home' },
+  { path: '/home', component: Home },
+  { path: '/destination', redirect: '/search' },
+  { path: '/search', component: SearchChooser },
+  { path: '/preference', component: PreferenceInput },
+  { path: '/search/guided', component: GuidedSearch },
   { path: '/recommend', component: () => import('./components/RecommendResult.vue') },
   { path: '/bookmarks', component: () => import('./components/BookmarkList.vue') },
   { path: '/community', component: () => import('./components/Community.vue') },
