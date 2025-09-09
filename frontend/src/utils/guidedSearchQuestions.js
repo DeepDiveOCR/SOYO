@@ -14,6 +14,7 @@ const questions = {
     // Config for making the query more natural
     suffixes: {
       who: {
+        alone: "*혼자 가기 좋은",
         two: "와 함께",
         "3-4": "들과 같이",
         group: " 단체",

@@ -183,7 +183,7 @@ export default {
           const suffixRule = queryConfig.suffixes?.[id];
           let text = selections[id].text; // 기본 텍스트를 먼저 할당
 
-          if (suffixRule && selections[id].value !== "alone") {
+          if (suffixRule) {
             let specificSuffix = "";
             // 규칙이 객체인지 확인
             if (typeof suffixRule === "object" && suffixRule !== null) {
